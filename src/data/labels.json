@@ -1,0 +1,6 @@
+[
+  {"labelName":"Land", "datasetId": 242},
+  {"labelName":"Alcoholpercentage", "datasetId": 242},
+  {"labelName":"Just Another Label", "datasetId": 242},
+  {"labelName":"Wat als een label superlang is omdat het recht uit CBS komt?", "datasetId": 242}]
+

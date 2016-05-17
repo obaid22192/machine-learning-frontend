@@ -1,0 +1,40 @@
+.right-sidebar{
+    position: fixed;
+    right: 0;
+    top: 64px;
+    width: $rightSidebarWidth;
+    height: 100%;
+    background-color: $backgroundColor;
+
+    .md-fab i, .md-icon-button i {
+      margin-top: 0;
+      font-size: 14px;
+    }
+
+    // Navigation drawer pattern: https://www.google.com/design/spec/patterns/navigation-drawer.html#navigation-drawer-specs
+    md-sidenav {
+        height: 100%;
+        min-width: $rightSidebarWidth;
+        max-width: $rightSidebarWidth;
+
+        & md-list-item.md-2-line .md-list-item-text {
+            padding-top: 14px;
+            padding-bottom: 12px;
+        }
+        & md-divider {
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+    }
+
+    /* More closely matches https://www.google.com/design/spec/components/lists.html#lists-specs */
+    md-list-item.md-3-line {
+      md-divider {
+        &[md-inset] {
+          left: 70px;
+        }
+      }
+    }
+
+}

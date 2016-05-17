@@ -1,0 +1,29 @@
+<md-dialog aria-label="Sign In"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Create new project</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <md-content layout-padding>
+          <form novalidate ng-submit="createNewProject()" flex-sm="100" flex-md="60" flex="40">
+            <md-input-container>
+              <label >Name</label>
+              <input type="text" name="text" ng-model="projctName" required/>
+            </md-input-container>
+            <div layout layout-align="end">
+              <md-button class="md-button" ng-click="cancel()">Cancel</md-button>
+              <md-button class="md-primary md-raised submit-button" type="submit" ng-click="createNewProject()">
+                Create
+              </md-button>
+            </div>
+          </form>
+        </md-content>
+
+      </div>
+    </md-dialog-content>
+
+  </form>
+</md-dialog>

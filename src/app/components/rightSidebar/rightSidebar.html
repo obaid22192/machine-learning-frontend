@@ -1,0 +1,33 @@
+<div ng-controller="datasetViewController" layout-fill>
+<md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2" md-component-id="right" >
+        <md-list class="right-sidebar-section labels-section">
+          <md-subheader  class="md-no-sticky">Labels</md-subheader>
+          <!-- replace with ng-repeat -->
+          <md-list-item ng-repeat="label in $root.labels">
+              <!-- <div class="md-list-item-text"> -->
+                <md-button class="md-icon-button" aria-label="More" ng-click="remove(label, $root.labels)">
+                  <i class="material-icons label-icon">clear</i>
+                </md-button>
+                <span>{{ label.lable }}</span>
+              <!-- </div> -->
+          </md-list-item>
+        </md-list>
+        <md-divider></md-divider>
+        <md-subheader  class="md-no-sticky">Features</md-subheader>
+        <md-list class="right-sidebar-section features-section">
+            <!-- replace with ng-repeat -->
+            <md-list-item ng-repeat="feature in $root.features">
+              <md-button class="md-icon-button" aria-label="More" ng-click="remove(feature, $root.features)">
+                <i class="material-icons label-icon">clear</i>
+              </md-button>
+              <span ng-bind="feature.feature"></span>
+            </md-list-item>
+
+        </md-list>
+        <md-divider></md-divider>
+
+        <div class="right-sidebar-section md-list-item-text run-ml-section" layout-margin >
+            <md-button class="run-ml-button md-raised"><a ui-sref="home.route2">Run Machine Learning</a></md-button>
+        </div>
+</md-sidenav>
+</div>

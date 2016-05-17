@@ -1,0 +1,26 @@
+md-toolbar:not(.md-menu-toolbar) {
+  background-color: $secondAccent;
+
+  .md-button{
+    color: rgba(0,0,0,0.87);
+
+    &.menu-button{
+        color: rgb(255,255,255);
+        height: 56px;
+        width: 56px;
+
+        i{
+          margin-top: 30%;
+        }
+    }
+  }
+}
+
+.md-primary.md-raised.submit-button.md-button.md-ink-ripple{
+  background-color: $mainAccent;
+}
+
+
+.navbar{
+    background-color: $mainAccent;
+}

@@ -1,0 +1,41 @@
+.homeView {
+  width: 100%;
+
+  .intro-header{
+    width: 100%;
+    height: 400px;
+    background-color: $secondAccent;
+
+    #m-logo{
+      display: block;
+      width: 200px;
+      height: 200px;
+      margin: auto;
+    }
+
+    h1{
+      color: white;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+    }
+    .intro-text{
+      text-align: center;
+      color: white;
+    }
+  }
+
+  .home-columns{
+    width: 100%;
+
+    .home-icons{
+      font-size: 5em;
+      margin: 0 auto;
+      display: block;
+    }
+
+    p{
+      text-align: justify;
+    }
+  }
+}

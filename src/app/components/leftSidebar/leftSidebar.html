@@ -1,0 +1,60 @@
+
+<md-sidenav  class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar class="md-hue-2 md-medium-tall">
+        <span flex></span>
+        <div layout="row" layout-align="start center">
+            <span flex></span>
+        </div>
+        <span flex></span>
+        <md-input-container>
+            <md-select ng-model="currentProject" placeholder="Projects" md-container-class="project-selection">
+                <md-option ng-value="project" ng-repeat="project in projects">{{ project.project_name }}</md-option>
+            </md-select>
+        </md-input-container>
+    </md-toolbar>
+
+    <div>
+        <md-button layout-align="center" class="md-fab add-dataset-btn" aria-label="FAB" ui-sref="home.adddataset({project_id: currentProject.project_id})">
+          <i class="material-icons add-dataset">add</i>
+        </md-button>
+    </div>
+
+    <md-subheader class="md-no-sticky">{{currentProject.project_name}} Datasets</md-subheader>
+    <md-list>
+        <div ng-repeat="data in $root.datasets | filter: {project_id: currentProject.project_id}">
+          <span ui-sref="home.route1({dataset: data, project_id: currentProject.project_id})">
+            <md-list-item role="link" md-ink-ripple ui-sref-active="active">
+                 <span  ng-bind="data.dataset_name" ></span>
+            </md-list-item>
+          </span>
+        </div>
+    </md-list>
+    <md-divider></md-divider>
+    <md-subheader class="md-no-sticky">My Datasets</md-subheader>
+    <md-list>
+        <md-list-item ui-sref="route2" class="md-no-proxy" ng-repeat="data in $root.datasets">
+          <span  ng-bind="data.dataset_name"></span>
+          <span flex></span>
+          <md-menu>
+            <md-button aria-label="" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+            <i class="material-icons">more_vert</i>
+            </md-button>
+
+            <md-menu-content width="4">
+              <md-menu-item>
+                <md-button ng-click="addToProject(data)">
+                  <i class="material-icons label-icon">add</i> Add to this project
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="deleteData(data)">
+                  <i class="material-icons label-icon">delete</i> Delete
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </md-list-item>
+    </md-list>
+    <md-divider></md-divider>
+
+</md-sidenav>

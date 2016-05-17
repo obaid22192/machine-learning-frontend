@@ -1,0 +1,13 @@
+<md-toolbar>
+    <div class="md-toolbar-tools navbar">
+        <md-button class="md-icon-button menu-button" aria-label="Custom Icon Button"  ng-click="toggleSidenav('left')">
+          <i class="material-icons">menu</i>
+        </md-button>
+        <a ui-sref="home">Mirabeau Machine Learning</a>
+        <!-- fill up the space between left and right area -->
+        <span flex></span>
+        <md-button class="md-primary" ng-click="showSignupDialog($event)"> Sign up </md-button>
+        <md-button class="md-primary" ng-click="showLoginDialog($event)"> Sign in </md-button>
+        <md-button class="md-raised" ng-click="showNewDialog($event)"> New Project </md-button>
+    </div>
+</md-toolbar>

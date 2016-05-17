@@ -1,0 +1,111 @@
+<div layout layout-fill>
+    <md-content class="runView" layout-align="center" flex="80">
+        <md-card>
+            <md-card-content>
+              <md-tabs md-dynamic-height md-border-bottom>
+              <!-- ng-repeat on all chosen regressors -->
+              <md-tab ng-repeat="algo in algorithms" ng-show="clicked">
+                <md-tab-label>{{ algo.Type }}</md-tab-label>
+                <md-tab-body class="md-padding">
+                    <md-list>
+                        <md-list-item class="md-2-line" ng-repeat="ag in algo.Algos">
+                            <md-checkbox ng-checked="exists(ag, selected)" ng-click="toggle(ag, selected)"></md-checkbox>
+                            <div class="md-list-item-text">
+                              <span>{{ag}}</span>
+                            </div>
+                            <form ng-show="ag === 'Sentiment-Analysis'" layout-margin>
+                              Select file:
+                              <input  type="file" onchange="angular.element(this).scope().fileChanged(this)">
+                              <!-- <md-button ng-click="submit()">
+                              upload
+                              </md-button> -->
+                            </form>
+            </md-card-content>
+                        </md-list-item>
+                    </md-list>
+                </md-tab-body>
+              </md-tab>
+            </md-tabs>
+        </md-card>
+        <md-card>
+            <md-card-content>
+                <h3>Split your data</h3>
+                <div layout>
+                    <div flex="10" layout layout-align="center center">
+                        <span class="md-body-1">Train: {{trainPercentage}}%</span>
+                    </div>
+                    <md-slider flex="" min="0" max="100" ng-model="trainPercentage" aria-label="testTrain" id="testTrain-slider" class=""></md-slider>
+                    <div flex="10" layout layout-align="center center">
+                        <span class="md-body-1">Test: {{100 - trainPercentage}}%</span>
+                    </div>
+                </div>
+            </md-card-content>
+        </md-card>
+
+      <div class="md-toolbar-tools">
+          <span flex=""></span>
+          <md-button class="md-raised" ng-click="load()"> Load </md-button>
+          <md-button class="md-raised" ng-click="run()" ng-disabled="!loaded"> Run </md-button>
+      </div>
+      <md-card ng-show="clicked">
+        <md-card-content>
+          <h3>Results</h3>
+          <nvd3-discrete-bar-chart
+        	data="accuracyVisualData"
+            id="exampleId"
+            showXAxis="true"
+            showYAxis="true"
+            height="400">
+            	<svg></svg>
+        </nvd3-discrete-bar-chart>
+          <!-- ng-repeat on all chosen regressors -->
+          <div ng-repeat="res in regResults" class="md-padding">
+              <h4>{{ res.algorithm }}</h4>
+              <p>Accuracy score: <md-progress-linear md-mode="determinate" ng-value="{{res.accuracy_score*100}}"></md-progress-linear>
+                {{ res.accuracy_score | number:3}}</p>
+              <div>
+                <div class="run-ml-results" >
+                  <p>Label test:</p>
+                  <ul ng-repeat="l in res.label_test track by $index">
+                      <li >
+                        {{ l }}
+                      </li>
+                  </ul>
+                </div>
+
+                <div  class="run-ml-results">
+                  <p>Prediction:</p>
+                  <ul ng-repeat="p in res.prediction track by $index">
+                    <li >
+                      {{ p }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <md-divider></md-divider>
+
+
+
+        </div>
+
+        </md-card-content>
+      </md-card>
+
+    </md-content>
+    <md-content flex="20">
+      <md-subheader class="md-no-sticky">Experiments</md-subheader>
+        <md-list >
+            <md-list-item class="md-2-line" ng-repeat="expriment in experiments | orderBy : sortExperiment : true">
+                <div class="md-list-item-text" role="link" md-ink-ripple ui-sref-active="active" ng-click="loadExperiment(expriment)">
+                  <span>{{expriment.creation_timestamp}}</span>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+
+</div>
+<md-content layout-margin>
+  <div class="md-toolbar-tools">
+    <span flex=""></span>
+  </div>
+</md-content>

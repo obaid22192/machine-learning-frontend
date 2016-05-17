@@ -1,0 +1,73 @@
+<md-content layout layout-margin flex>
+  <md-content layout="column" layout-margin flex="80">
+      <md-content>
+        <md-card>
+          <md-card-content>
+            <div class="md-toolbar-tools">
+                <h3 ng-bind="dataset.dataset_name"></h3>
+                <span flex=""></span>
+                <md-button class="md-warn md-raised md-hue-2" ng-click="removeProjectData()"
+                >Delete</md-button>
+            </div>
+          </md-card-content>
+        </md-card>
+      </md-content>
+      <md-content  layout-margin >
+        <md-card>
+          <md-card-content>
+              <md-list>
+                  <md-list-item class="md-2-line" ng-repeat="col_name in dataset.dataset_columns">
+                      <md-checkbox ng-checked="exists(col_name, selected)" ng-click="toggle(col_name, selected)"></md-checkbox>
+                      <div class="md-list-item-text">
+                        <span>{{col_name}}</span>
+                      </div>
+                  </md-list-item>
+              </md-list>
+          </md-card-content>
+        </md-card>
+      </md-content>
+      <md-content layout-margin>
+        <div class="md-toolbar-tools">
+          <span flex=""></span>
+          <md-button class="md-raised" ng-click="addLabels()">Add labels</md-button>
+          <md-button class="md-raised" ng-click="addFeatures()">Add features</md-button>
+        </div>
+      </md-content>
+      <md-content layout-margin>
+        <div class="md-toolbar-tools">
+          <span flex=""></span>
+        </div>
+      </md-content>
+  </md-content>
+  <md-content class="md-whiteframe-z2" layout-fill>
+          <md-list class="right-sidebar-section labels-section">
+            <md-subheader  class="md-no-sticky">Labels</md-subheader>
+            <!-- replace with ng-repeat -->
+            <md-list-item ng-repeat="label in $root.labels">
+                <!-- <div class="md-list-item-text"> -->
+                  <md-button class="md-icon-button" aria-label="More" ng-click="remove(label, $root.labels, 'label')">
+                    <i class="material-icons label-icon">clear</i>
+                  </md-button>
+                  <span>{{ label.lable }}</span>
+                <!-- </div> -->
+            </md-list-item>
+          </md-list>
+          <md-divider></md-divider>
+          <md-subheader  class="md-no-sticky">Features</md-subheader>
+          <md-list class="right-sidebar-section features-section">
+              <!-- replace with ng-repeat -->
+              <md-list-item ng-repeat="feature in $root.features">
+                <md-button class="md-icon-button" aria-label="More" ng-click="remove(feature, $root.features, 'feature')">
+                  <i class="material-icons label-icon">clear</i>
+                </md-button>
+                <span ng-bind="feature.feature"></span>
+              </md-list-item>
+
+          </md-list>
+          <md-divider></md-divider>
+
+          <div class="right-sidebar-section md-list-item-text run-ml-section" layout-margin >
+            <a ui-sref="home.route2"><md-button class="run-ml-button md-raised">Run Machine Learning</md-button></a>
+          </div>
+  </md-content>
+</md-content>
