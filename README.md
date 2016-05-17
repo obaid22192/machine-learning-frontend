@@ -74,7 +74,7 @@ Do not use this. Check the command line and look for the following:
 Access URLs:
  ----------------------------------------
        Local: http://localhost:3000/
-    External: http://192.168.178.15:3000/
+    External: yourIp:3000/
  ----------------------------------------
 ```
 
